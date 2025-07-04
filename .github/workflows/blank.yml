@@ -34,13 +34,6 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-
-      - name: Install Mongodb
-        run: |
-          sudo apt get update
-          sudo apt get upgrade
-          sudo apt-get install -y mongodb-database-tools
-
         
       - name: Run Backups
         run: | 
