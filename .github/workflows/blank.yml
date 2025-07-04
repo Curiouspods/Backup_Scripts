@@ -34,3 +34,13 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      - name: Install Mongodb
+        run: sudo apt install mongodb
+
+        
+      - name: Run Backups
+        run: | 
+              cd Backups
+              sudo chmod +x Backup.sh
+              ./Backup.sh
