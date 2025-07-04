@@ -36,7 +36,8 @@ jobs:
           echo test, and deploy your project.
 
       - name: Install Mongodb
-        run: sudo apt install mongodb
+        run: sudo apt-get install -y mongodb-database-tools
+
 
         
       - name: Run Backups
