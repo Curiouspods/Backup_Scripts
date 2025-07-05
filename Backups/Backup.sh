@@ -4,19 +4,19 @@ db="MongoDB"
 Backup_time=$(date +"%Y%m%d_%H%M%S")
 
 folder="${db}_${Backup_time}"
-zip_file="${folder}.zip"
+tar_file="${folder}.tar.gz"
 
-# Create folder and run mongodump
+# Create backup folder and run mongodump
 mkdir "$folder"
 mongodump --uri="mongodb+srv://Adminuser:vFa4GYtmHnpLZQQK@vtexai-prod.carxbxj.mongodb.net/?retryWrites=true&w=majority&appName=VtexAI-Prod" --out "$folder"
 
-# Zip the dump folder
-zip -r "$zip_file" "$folder"
+# Archive and compress with tar
+tar -czvf "$tar_file" "$folder"
 
-# Upload the zip to Google Drive 'DB_BACKUPS'
-rclone copy -v "$zip_file" gdrive:/DB_BACKUPS/
+# Upload the tar.gz to Google Drive 'DB_BACKUPS'
+rclone copy -v "$tar_file" gdrive:/DB_BACKUPS/
 
-# Clean up local dump and zip file
-rm -rf "$folder" "$zip_file"
+# Clean up local dump folder and tar.gz file
+rm -rf "$folder" "$tar_file"
 
 echo "Backup and upload complete at $Backup_time"
