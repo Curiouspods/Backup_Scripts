@@ -36,6 +36,8 @@ jobs:
           echo test, and deploy your project.
         
       - name: Run Backups
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
         run: | 
               cd Backups
               sudo chmod +x Backup.sh
