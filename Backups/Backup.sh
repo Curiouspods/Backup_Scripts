@@ -8,7 +8,7 @@ tar_file="${folder}.tar.gz"
 
 # Create backup folder and run mongodump
 mkdir "$folder"
-mongodump --uri="mongodb+srv://Adminuser:vFa4GYtmHnpLZQQK@vtexai-prod.carxbxj.mongodb.net/?retryWrites=true&w=majority&appName=VtexAI-Prod" --out "$folder"
+mongodump --uri="$MONGO_URI" --out "$folder"
 
 # Archive and compress with tar
 tar -czvf "$tar_file" "$folder"
